@@ -33,7 +33,7 @@ def get_review_count(owner: str, repo: str, pr_number: int, headers: Dict) -> in
         return 0
 
 # ============================================================
-# Helper: 
+# Helper: Path files of a repo
 # ============================================================
 def get_file_path_metrics(owner: str, repo: str, pr_number: int, headers: Dict) -> Tuple[int, float, int]:
     """
@@ -83,7 +83,80 @@ def get_file_path_metrics(owner: str, repo: str, pr_number: int, headers: Dict) 
     
     return num_paths, avg_path_length, max_path_length
 
+# ============================================================
+# Helper: Commit Count
+# ============================================================
+def get_commit_count(owner, repo, headers):
+    url = f"https://api.github.com/repos/{owner}/{repo}/commits"
+    params = {"per_page": 1}
 
+    try:
+        response = requests.head(url, headers=headers, params=params, timeout=10)
+        response.raise_for_status()
+        link_header = response.headers.get('Link')
+
+        if link_header:
+            match = re.search(r'page=(\d+)>; rel="last"', link_header)
+            if match:
+                return int(match.group(1))
+
+        # fallback for repos with few commits
+        response = requests.get(url, headers=headers, params={"per_page": 100}, timeout=10)
+        return len(response.json())
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching commits for {owner}/{repo}: {e}")
+        return 0
+
+
+# ============================================================
+# Helper: Developer commits metrics
+# ============================================================
+def get_developer_commit_metrics(owner: str, repo: str, developer_login: str, github_token: Optional[str] = None) -> Optional[Dict]:
+    """
+    Retrieves a developer's total commits and their percentage contribution to the repo.
+    """
+    
+    # Setup headers with token
+    headers = {}
+    if github_token:
+        headers["Authorization"] = f"token {github_token}"
+    
+    try:
+        # 1. Get the total commits for the developer (filtered by author)    
+        developer_commit_url = f"https://api.github.com/repos/{owner}/{repo}/commits"
+        params = {"per_page": 1, "author": developer_login}
+        
+        dev_response = requests.head(developer_commit_url, headers=headers, params=params, timeout=10)
+        dev_response.raise_for_status()
+        
+        developer_commits = 0
+        dev_link_header = dev_response.headers.get('Link')
+        
+        if dev_link_header:
+            dev_last_page_match = re.search(r'page=(\d+)>; rel="last"', dev_link_header)
+            if dev_last_page_match:
+                developer_commits = int(dev_last_page_match.group(1))
+        
+        # 2. Get the total commits for the entire repository
+        total_commits = get_commit_count(owner, repo, headers)
+        
+        # 3. Calculate the percentage contribution
+        commit_percentage = 0.0
+        if total_commits > 0:
+            commit_percentage = (developer_commits / total_commits) * 100
+        
+        return {
+            "Developer_Login": developer_login,
+            "Total_Repo_Commits": total_commits,
+            "Developer_Commits": developer_commits,
+            "Developer_Commit_Percentage": commit_percentage,
+        }
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching data for {developer_login} in {owner}/{repo}: {e}")
+        return None
+    
+    
 # ============================================================
 # Main Function: Pull Request Metrics
 # ============================================================

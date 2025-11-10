@@ -96,7 +96,7 @@ print(f"Starting commit metric retrieval for {DEVELOPER_LOGIN} in {REPO_OWNER}/{
 
 metrics = get_developer_commit_metrics(REPO_OWNER, REPO_NAME, DEVELOPER_LOGIN, GITHUB_TOKEN)
 
-print("\n📊 Developer Commit Metrics Summary:")
+print("\nDeveloper Commit Metrics Summary:")
 print("-" * 70)
 
 if metrics:

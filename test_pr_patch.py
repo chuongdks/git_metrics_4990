@@ -1,5 +1,4 @@
 import requests
-from typing import Optional
 from dotenv import load_dotenv
 import os
 
@@ -9,46 +8,44 @@ import os
 load_dotenv("./api_key.env")
 GITHUB_TOKEN = os.getenv("GITHUB_API_KEY")
 
-# ============================================================
-# Helper: Get the code patch 
-# ============================================================
-def get_pr_patch(owner: str, repo: str, pr_number: int, github_token: Optional[str] = None) -> Optional[str]:
-    """
-    Fetches the final code patch (diff) for a Pull Request.
-    """
-    pr_url = f"https://api.github.com/repos/{owner}/{repo}/pulls/{pr_number}"
+# --- 1. SET YOUR VARIABLES ---
+PR_OWNER = "AgentOps-AI"
+PR_REPO = "agentops"
+PR_NUMBERS = 1179 
+
+# --- 2. CONSTRUCT THE URL AND HEADERS ---
+API_URL = f"https://api.github.com/repos/{PR_OWNER}/{PR_REPO}/pulls/{PR_NUMBERS}"
+
+HEADERS = {
+    # *** KEY CHANGE: Requesting the output in unified patch format ***
+    "Accept": "application/vnd.github.v3.patch", 
+    "Authorization": f"Bearer {GITHUB_TOKEN}",
+    "X-GitHub-Api-Version": "2022-11-28"
+}
+
+# --- 3. MAKE THE REQUEST ---
+response = requests.get(API_URL, headers=HEADERS)
+
+# --- 4. CHECK THE RESPONSE ---
+if response.status_code == 200:
+    # The response content is the single text string containing all patches
+    full_patch_text = response.text
     
-    headers = {
-        # Request the patch media type instead of JSON
-        "Accept": "application/vnd.github.v3.patch" 
-    }
+    print("Successfully retrieved the full unified patch.")
     
-    if github_token:
-        headers["Authorization"] = f"token {github_token}"
+    # You can now save this text to a file or process it:
+    with open('./pr_final_patch.patch', 'w', encoding='utf-8') as f:
+        f.write(full_patch_text)
     
+    # Display the first 20 lines of the patch
+    print("\n--- Start of Unified Patch (First 20 Lines) ---")
+    print('\n'.join(full_patch_text.splitlines()[:20])) # 
+    print("---------------------------------------------")
+
+else:
+    print(f"Error. Status Code: {response.status_code}")
+    # Print the error message if it's JSON
     try:
-        response = requests.get(pr_url, headers=headers, timeout=10)
-        response.raise_for_status()
-        
-        # The content is returned as a plain text string (the patch)
-        return response.text 
-
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching patch for PR #{pr_number}: {e}")
-        return None
-
-# ============================================================
-# MAIN PROGRAM
-# ============================================================
-PR_OWNER = "kubernetes-sigs"
-PR_REPO = "cloud-provider-azure"
-PR_NUMBERS = 9250 
-
-patch_content = get_pr_patch(PR_OWNER, PR_REPO, PR_NUMBERS, GITHUB_TOKEN)
-
-if patch_content:
-    print(f"Successfully fetched patch for {PR_OWNER}/{PR_REPO} PR #{PR_NUMBERS}.")
-    # Print the first 15 lines of the patch for brevity
-    print("\n--- Start of Patch (First 15 Lines) ---")
-    print('\n'.join(patch_content.splitlines()[:15]))
-    print("--- End of Snippet ---")
+        print(response.json()) 
+    except requests.exceptions.JSONDecodeError:
+        print(response.text)

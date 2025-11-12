@@ -2,6 +2,8 @@ import requests
 import json
 import os
 from typing import List, Dict, Optional
+import readability
+import syntok.segmenter as segmenter
 from dotenv import load_dotenv
 import os
 
@@ -36,14 +38,21 @@ def fetch_single_issue(owner: str, repo: str, issue_number: int, github_token: O
         if 'pull_request' in issue_data:
             print(f"   [SKIP] #{issue_number} is a Pull Request, skipping.")
             return None
+        
+        # Extract the body fields for readability
+        issue_body = issue_data.get('body') or "No body content provided."
 
+        # Calculate Readability Score
+        flesch_score = get_readability_score(issue_body)
+        
         # Extract the required fields
         return {
             "issue_number": issue_number,
             "title": issue_data.get('title'),
-            "body": issue_data.get('body') or "No body content provided.",
+            "body": issue_body,
             "labels": [label['name'] for label in issue_data.get('labels', [])],
-            "url": issue_data.get('html_url')
+            "url": issue_data.get('html_url'),
+            "flesch_reading_ease": flesch_score
         }
 
     except requests.exceptions.HTTPError as e:
@@ -99,8 +108,16 @@ def save_issues_to_markdown(issues: List[Dict], output_filename: str):
         markdown_content += f"## Issue #{issue['issue_number']}: {issue['title']}\n"
         markdown_content += f"* **URL:** {issue['url']}\n"
         markdown_content += f"* **Labels:** {', '.join(issue['labels'])}\n"
+        
+        # Display the new score
+        score = issue.get('flesch_reading_ease')
+        if score is not None:
+            # Score is usually between 0 (hard) and 100 (easy)
+            markdown_content += f"* **Flesch Reading Ease Score:** {score:.2f}\n" 
+        else:
+             markdown_content += f"* **Flesch Reading Ease Score:** N/A (Empty body or error)\n"
+             
         markdown_content += "\n### Description\n"
-        # We need to ensure the issue body is properly formatted (e.g., handles newlines)
         markdown_content += f"{issue['body']}\n" 
         markdown_content += "---\n"
         
@@ -111,8 +128,49 @@ def save_issues_to_markdown(issues: List[Dict], output_filename: str):
     except Exception as e:
         print(f"Error writing Markdown file: {e}")
 
+# ----------------------------------------------------
+# Helper: Function for Preprocessing and Scoring
+# ----------------------------------------------------
+def get_readability_score(text: str) -> Optional[float]:
+    """
+    Tokenizes text using syntok and returns the Flesch Reading Ease score.
+    Returns None if the text is empty or analysis fails.
+    Based on: https://pypi.org/project/readability/
+    """
+    if not text or text == "No body content provided.":
+        return None
+    
+    # 1. Use syntok to tokenize and segment the text
+    # This complex join statement transforms the raw string into the required format:
+    # 'word1 word2 .\nword3 word4 .\n\nnew_paragraph_word1 .'
+    try:
+        tokenized = '\n\n'.join(
+            '\n'.join(' '.join(token.value for token in sentence) 
+                      for sentence in paragraph)
+            for paragraph in segmenter.analyze(text)
+        )
+    except Exception as e:
+        print(f"Error during syntok analysis: {e}")
+        return None
 
-# --- INPUT DATA ---
+    # 2. Calculate the readability scores
+    try:
+        # Check if the tokenized text is not empty before scoring
+        if not tokenized.strip():
+            return None
+            
+        results = readability.getmeasures(tokenized, lang='en')
+        
+        # We will return the Flesch Reading Ease score as an example
+        return results['readability grades']['FleschReadingEase']
+        
+    except Exception as e:
+        print(f"Error calculating readability score: {e}")
+        return None
+
+# ============================================================
+# MAIN PROGRAM
+# ============================================================
 TARGET_ISSUE_NUMBERS = [
     27,  
 ]

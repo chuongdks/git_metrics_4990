@@ -6,6 +6,7 @@ Total Issues Found: 1
 ## Issue #27: Integrating a ci pipeline into the project
 * **URL:** https://github.com/fireship-io/flamethrower/issues/27
 * **Labels:** 
+* **Flesch Reading Ease Score:** 76.56
 
 ### Description
 **What about integrating a ci pipeline into the project?**

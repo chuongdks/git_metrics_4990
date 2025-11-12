@@ -83,9 +83,9 @@ def get_developer_commit_metrics(owner: str, repo: str, developer_login: str, gi
         print(f"Error fetching data for {developer_login} in {owner}/{repo}: {e}")
         return None
     
-    # --- (The get_total_commit_count function goes here) ---
-# --- (The get_developer_commit_metrics function goes here) ---
-
+# ============================================================
+# MAIN PROGRAM
+# ============================================================
 REPO_OWNER = "kubernetes-sigs"
 REPO_NAME = "cloud-provider-azure"
 

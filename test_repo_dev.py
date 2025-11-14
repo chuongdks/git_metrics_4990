@@ -35,7 +35,9 @@ def get_commit_count(owner, repo, headers):
     except requests.exceptions.RequestException:
         return 0
 
-
+# ============================================================
+# Helper: Developer commits metrics
+# ============================================================
 def get_developer_commit_metrics(owner: str, repo: str, developer_login: str, github_token: Optional[str] = None) -> Optional[Dict]:
     """
     Retrieves a developer's total commits and their percentage contribution to the repo.

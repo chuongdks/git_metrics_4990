@@ -1,2 +1,4 @@
 *.env
 *.patch
+*.csv
+*.json

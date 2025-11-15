@@ -1,0 +1,5 @@
+Repo,PR_Number,User,Total_Commits_Repo,Dev_Commits_Repo,Dev_Commits_Repo_Percentage,Dev_PR_Total,Followers,Creation_Date,Days_Active
+dotCMS/core,32656,spbolton,27365,233,0.85,251,3,2011-12-02T14:29:41Z,5097
+hyperledger/besu,8904,jflo,6259,159,2.54,235,43,2010-07-27T16:03:54Z,5589
+MeteorDevelopment/meteor-client,5568,claudecodebyia,4584,0,0.0,1,0,2025-07-12T23:33:38Z,125
+apache/pulsar,24145,alexander-nailed-it,13823,0,0.0,1,0,2025-02-27T18:37:57Z,260

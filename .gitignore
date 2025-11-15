@@ -1,4 +1,3 @@
 *.env
 *.patch
-*.csv
 *.json

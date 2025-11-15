@@ -14,7 +14,7 @@ response = requests.get('https://api.github.com/rate_limit', headers=headers)
 data = response.json()
 
 # Pretty-print and save to file
-with open("./rate_limit_check/rate_limit.json", "x") as f:
+with open("./rate_limit_check/rate_limit.json", "w") as f:
     json.dump(data, f, indent=4)
 
 print("Saved to rate_limit.json")

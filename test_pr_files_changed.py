@@ -10,21 +10,12 @@ load_dotenv("./api_key.env")
 GITHUB_TOKEN = os.getenv("GITHUB_API_KEY")
 
 # ============================================================
-# Helper: Get the files name, patch code, addition, deletion, status,...
+# Helper: Get the files name, patch code, addition, deletion, status, and RAW URL
 # ============================================================
-def get_pr_files_and_patches(owner: str, repo: str, pr_number: int, github_token: Optional[str] = None) -> List[Dict]:
+def get_pr_file_details(owner: str, repo: str, pr_number: int, github_token: Optional[str] = None) -> List[Dict]:
     """
-    Fetches the filename and individual patch content for all files changed 
-    in a Pull Request, handling pagination.
-
-    Args:
-        owner: The repository owner.
-        repo: The repository name.
-        pr_number: The Pull Request number.
-        github_token: Optional GitHub Personal Access Token for authentication/rate limits.
-
-    Returns:
-        A list of dictionaries, each containing the filename and patch string.
+    Fetches the details for all files changed in a Pull Request,
+    INCLUDING the raw URL for the file content.
     """
     
     base_url = f"https://api.github.com/repos/{owner}/{repo}/pulls/{pr_number}/files"
@@ -48,25 +39,23 @@ def get_pr_files_and_patches(owner: str, repo: str, pr_number: int, github_token
             files_data = response.json()
 
             if not files_data:
-                # No more files or end of data
                 break
 
             for file in files_data:
-                # Extract filename
                 filename = file.get('filename')
-                
-                # Extract patch, and handle the "patch too long/missing" scenario
-                # The 'patch' field is sometimes missing or null if the diff is massive.
                 patch_content = file.get('patch')
-                
                 final_patch = patch_content if patch_content else "NULL"
+                
+                # 📢 NEW: Extract the raw_url
+                raw_url = file.get('raw_url') 
                 
                 all_file_details.append({
                     "filename": filename,
                     "patch": final_patch,
-                    "status": file.get('status'), # Status (added, modified, deleted)
+                    "status": file.get('status'),
                     "additions": file.get('additions', 0),
                     "deletions": file.get('deletions', 0),
+                    "raw_url": raw_url 
                 })
             
             # Check for the next page header
@@ -79,7 +68,7 @@ def get_pr_files_and_patches(owner: str, repo: str, pr_number: int, github_token
             print(f"Error during API call on page {page}: {e}")
             break
             
-    print(f"✅ Finished fetching. Total files processed: {len(all_file_details)}")
+    print(f"Finished fetching. Total files processed: {len(all_file_details)}")
     return all_file_details
 
 # ============================================================
@@ -129,12 +118,12 @@ def save_patches_to_files(file_patches: List[Dict], pr_number: int):
 # MAIN PROGRAM
 # ============================================================
 # Using the URL you provided: 
-OWNER = "AgentOps-AI"
-REPO = "agentops"
-PR_NUMBER = 1179
+OWNER = "jdereg"
+REPO = "java-util"
+PR_NUMBER = 264
 
 # 1. Fetch the data from the GitHub API
-file_patches = get_pr_files_and_patches(OWNER, REPO, PR_NUMBER, GITHUB_TOKEN)
+file_patches = get_pr_file_details(OWNER, REPO, PR_NUMBER, GITHUB_TOKEN)
 
 # Display Results
 if file_patches:

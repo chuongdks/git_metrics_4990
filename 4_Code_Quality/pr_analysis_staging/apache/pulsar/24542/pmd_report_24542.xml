@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 https://pmd.github.io/schema/report_2_0_0.xsd" version="7.18.0" timestamp="2025-11-17T16:08:38.572">
+<file name=".\pr_analysis_staging\apache\pulsar\24542\microbench\src\main\java\org\apache\pulsar\broker\delayed\bucket\BucketDelayedDeliveryTrackerSimpleBenchmark.java">
+<violation beginline="59" endline="59" begincolumn="27" endcolumn="34" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerSimpleBenchmark" variable="counter" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="150" endline="150" begincolumn="20" endcolumn="43" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerSimpleBenchmark" method="benchmarkReadWrite10_90" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'benchmarkReadWrite10_90' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="181" endline="181" begincolumn="20" endcolumn="43" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerSimpleBenchmark" method="benchmarkReadWrite20_80" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'benchmarkReadWrite20_80' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="210" endline="210" begincolumn="20" endcolumn="43" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerSimpleBenchmark" method="benchmarkReadWrite40_60" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'benchmarkReadWrite40_60' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="239" endline="239" begincolumn="20" endcolumn="43" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerSimpleBenchmark" method="benchmarkReadWrite50_50" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'benchmarkReadWrite50_50' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="268" endline="268" begincolumn="20" endcolumn="43" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerSimpleBenchmark" method="benchmarkReadWrite60_40" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'benchmarkReadWrite60_40' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="297" endline="297" begincolumn="20" endcolumn="43" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerSimpleBenchmark" method="benchmarkReadWrite80_20" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'benchmarkReadWrite80_20' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="326" endline="326" begincolumn="20" endcolumn="43" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerSimpleBenchmark" method="benchmarkReadWrite90_10" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'benchmarkReadWrite90_10' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="359" endline="359" begincolumn="20" endcolumn="59" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerSimpleBenchmark" method="benchmarkReadWrite90_10_HighConcurrency" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'benchmarkReadWrite90_10_HighConcurrency' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+</file>
+<file name=".\pr_analysis_staging\apache\pulsar\24542\pulsar-broker\src\main\java\org\apache\pulsar\broker\delayed\bucket\BucketDelayedDeliveryTracker.java">
+<violation beginline="75" endline="75" begincolumn="19" endcolumn="25" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker.SnapshotKey" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on record 'SnapshotKey': records are implicitly static
+</violation>
+<violation beginline="112" endline="112" begincolumn="19" endcolumn="66" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ConcurrentHashMap'; use the interface instead
+</violation>
+<violation beginline="164" endline="165" begincolumn="13" endcolumn="43" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="recoverBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="185" endline="186" begincolumn="13" endcolumn="43" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="recoverBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="200" endline="200" begincolumn="13" endcolumn="113" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="recoverBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="201" endline="201" begincolumn="30" endcolumn="50" rule="AvoidInstanceofChecksInCatchClause" ruleset="Error Prone" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="recoverBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidinstanceofchecksincatchclause" priority="3">
+An instanceof check is being performed on the caught exception. Create a separate catch clause for InterruptedException.
+</violation>
+<violation beginline="240" endline="241" begincolumn="9" endcolumn="100" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="recoverBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="329" endline="330" begincolumn="25" endcolumn="62" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="afterCreateImmutableBucket" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="338" endline="339" begincolumn="21" endcolumn="62" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="afterCreateImmutableBucket" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="343" endline="343" begincolumn="35" endcolumn="63" rule="UselessQualifiedThis" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="afterCreateImmutableBucket" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="425" endline="425" begincolumn="29" endcolumn="43" rule="UselessParentheses" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="selectMergedBuckets" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses around `mergeNum - 1`.
+</violation>
+<violation beginline="462" endline="462" begincolumn="13" endcolumn="83" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="asyncMergeBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="469" endline="469" begincolumn="13" endcolumn="104" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="asyncMergeBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="478" endline="478" begincolumn="82" endcolumn="84" rule="FormalParameterNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="asyncMergeBucketSnapshot" variable="__" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#formalparameternamingconventions" priority="1">
+The lambda parameter name '__' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="485" endline="486" begincolumn="17" endcolumn="63" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="asyncMergeBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="490" endline="491" begincolumn="17" endcolumn="100" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="asyncMergeBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="513" endline="513" begincolumn="32" endcolumn="34" rule="FormalParameterNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="asyncMergeBucketSnapshot" variable="__" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#formalparameternamingconventions" priority="1">
+The lambda parameter name '__' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="518" endline="518" begincolumn="39" endcolumn="67" rule="UselessQualifiedThis" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="asyncMergeBucketSnapshot" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="552" endline="552" begincolumn="76" endcolumn="79" rule="FormalParameterNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="asyncMergeBucketSnapshot" variable="___" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#formalparameternamingconventions" priority="1">
+The lambda parameter name '___' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="650" endline="651" begincolumn="21" endcolumn="71" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="getScheduledMessages" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="662" endline="663" begincolumn="21" endcolumn="71" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="getScheduledMessages" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="669" endline="712" begincolumn="54" endcolumn="19" rule="AssignmentInOperand" ruleset="Error Prone" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="getScheduledMessages" variable="loadFuture" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignment to pendingLoad in operand
+</violation>
+<violation beginline="671" endline="671" begincolumn="35" endcolumn="63" rule="UselessQualifiedThis" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="getScheduledMessages" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="689" endline="689" begincolumn="34" endcolumn="36" rule="FormalParameterNamingConventions" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="getScheduledMessages" variable="__" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#formalparameternamingconventions" priority="1">
+The lambda parameter name '__' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="694" endline="695" begincolumn="25" endcolumn="102" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="getScheduledMessages" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="699" endline="701" begincolumn="25" endcolumn="114" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="getScheduledMessages" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="766" endline="766" begincolumn="13" endcolumn="88" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="close" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="783" endline="785" begincolumn="9" endcolumn="10" rule="SimplifyBooleanReturns" ruleset="Design" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="removeIndexBit" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+This if statement can be replaced by `return {condition} || {elseBranch};`
+</violation>
+<violation beginline="810" endline="812" begincolumn="9" endcolumn="10" rule="SimplifyBooleanReturns" ruleset="Design" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTracker" method="containsMessageUnsafe" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+This if statement can be replaced by `return {condition} || {elseBranch};`
+</violation>
+</file>
+<file name=".\pr_analysis_staging\apache\pulsar\24542\pulsar-broker\src\test\java\org\apache\pulsar\broker\delayed\bucket\BucketDelayedDeliveryTrackerThreadSafetyTest.java">
+<violation beginline="54" endline="54" begincolumn="59" endcolumn="69" rule="SingularField" ruleset="Design" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" variable="dispatcher" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'dispatcher' could be replaced by a local variable.
+</violation>
+<violation beginline="55" endline="55" begincolumn="27" endcolumn="33" rule="SingularField" ruleset="Design" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" variable="cursor" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'cursor' could be replaced by a local variable.
+</violation>
+<violation beginline="56" endline="56" begincolumn="19" endcolumn="24" rule="SingularField" ruleset="Design" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" variable="timer" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'timer' could be replaced by a local variable.
+</violation>
+<violation beginline="57" endline="57" begincolumn="35" endcolumn="42" rule="SingularField" ruleset="Design" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" variable="storage" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'storage' could be replaced by a local variable.
+</violation>
+<violation beginline="247" endline="260" begincolumn="29" endcolumn="30" rule="NonExhaustiveSwitch" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" method="testDeadlockDetection" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#nonexhaustiveswitch" priority="3">
+Switch statements or expressions should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="271" endline="271" begincolumn="40" endcolumn="64" rule="AvoidInstanceofChecksInCatchClause" ruleset="Error Prone" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" method="testDeadlockDetection" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidinstanceofchecksincatchclause" priority="3">
+An instanceof check is being performed on the caught exception. Create a separate catch clause for IllegalArgumentException.
+</violation>
+<violation beginline="327" endline="329" begincolumn="19" endcolumn="18" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" method="testDataConsistencyUnderConcurrency" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="337" endline="337" begincolumn="23" endcolumn="31" rule="UnusedLocalVariable" ruleset="Best Practices" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" method="testDataConsistencyUnderConcurrency" variable="readerId" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'readerId'.
+</violation>
+<violation beginline="356" endline="358" begincolumn="19" endcolumn="18" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" method="testDataConsistencyUnderConcurrency" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="410" endline="412" begincolumn="23" endcolumn="22" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" method="testOptimisticReadPerformance" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="424" endline="424" begincolumn="33" endcolumn="69" rule="UselessParentheses" ruleset="Code Style" package="org.apache.pulsar.broker.delayed.bucket" class="BucketDelayedDeliveryTrackerThreadSafetyTest" method="testOptimisticReadPerformance" variable="throughput" externalInfoUrl="https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses around `totalReads.get() * 1_000_000_000.0`.
+</violation>
+</file>
+</pmd>

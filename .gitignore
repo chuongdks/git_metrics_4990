@@ -1,3 +1,5 @@
 *.env
 *.patch
 *.json
+*.java
+*.xml

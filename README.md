@@ -72,9 +72,9 @@ Once all 5 feature extraction notebooks have been successfully run, the final st
 
 This notebook will:
 
-Read the 10 final CSV files (2 files x 5 dimensions) generated in Stage 1.
-Merge and clean the features into a single dataset.
-Define the target variable (Accepted/Rejected).
-Train a Classification ML Model (e.g., Logistic Regression, Random Forest, etc., depending on the code).
-Output the Classification ML Report (e.g., accuracy, precision, recall, F1-score, confusion matrix).
+- Read the 10 final CSV files (2 files x 5 dimensions) generated in Stage 1.
+- Merge and clean the features into a single dataset.
+- Define the target variable (Accepted/Rejected).
+- Train a Classification ML Model (e.g., Logistic Regression, Random Forest, etc., depending on the code).
+- Output the Classification ML Report (e.g., accuracy, precision, recall, F1-score, confusion matrix).
 

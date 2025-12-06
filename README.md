@@ -1,34 +1,3 @@
-# 🧠 On the Rejection of Agentic Pull Requests
-
-This repository investigates **why agentic GitHub Pull Requests (PRs) get rejected**, using large-scale feature extraction and machine learning classification.
-
-The workflow consists of:
-- **Stage 1:** Extracting PR, repo, developer, readability, and code-quality features  
-- **Stage 2:** Merging features and training ML models to classify accepted vs. rejected PRs
-
----
-
-## 📌 Table of Contents
-- [Setup & Installation](#setup--installation)
-- [Python Dependencies](#python-dependencies)
-- [External Tools](#external-tools)
-- [GitHub API Setup](#github-api-setup)
-- [Project Execution Flow](#project-execution-flow)
-- [Stage 1 — Feature Extraction](#stage-1--feature-extraction)
-- [Stage 2 — Machine-Learning](#stage-2--machine-learning)
-- [Output Files](#output-files)
-
----
-
-# 🚀 Setup & Installation
-
-Clone the repository and install dependencies:
-
-```bash
-git clone <your-repo-url>
-cd your-project
-pip install -r requirements.txt
-
 # ON THE REJECTION OF AGENTIC PULL REQUESTS — README
 
 ## 1. Setup and Installation

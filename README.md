@@ -1,10 +1,19 @@
-# ON THE REJECTION OF AGENTIC PULL REQUESTS — README
+# ON THE REJECTION OF AGENTIC PULL REQUESTS
+## 0. Quick Overview
+
+- Install Python + dependencies
+
+- Configure GitHub token
+
+- Install PMD + Java (for code quality)
+
+- Run the 5 feature extract notebooks
+
+- Run ML_test.ipynb
+
 
 ## 1. Setup and Installation
-
 ### 1.1 Python Dependencies
-
-The following Python libraries are required to run the feature extraction and ML notebooks. It is highly recommended to use a virtual environment.
 
 You can install all required libraries using pip:
 
@@ -20,6 +29,8 @@ You can install all required libraries using pip:
 | syntok | Used by readability for advanced text tokenization. |
 | scikit-learn | Essential for the ML classification and reporting in ML_test.ipynb. |
 
+<br>
+
 ### 1.2 External Program Dependencies
 
 For the Code Quality feature extraction (features_pr_code_quality.ipynb), two external tools are necessary:
@@ -28,8 +39,12 @@ For the Code Quality feature extraction (features_pr_code_quality.ipynb), two ex
 PMD is a Java application. You must have Java (version 8 or newer) installed and configured on your system path.
 
 #### PMD Static Analysis Tool
-- **Download:** Obtain the PMD binary distribution (ZIP or JAR) from the official PMD website.
-- **Configuration:** Ensure the PMD command (e.g., `pmd` or `java -jar pmd-bin-*.jar`) is accessible, or update your notebook to point to its location.
+- **Download, Installation and basic CLI usage :** https://docs.pmd-code.org/latest/pmd_userdocs_installation.html
+- **File Configuration:**
+    - In features_pr_code_quality.ipynb under section **3.3. Download the changed Java files and do PMD static code analysis**, change the RULESET_PATH to the quickstart.xml ruleset location
+    - The ruleset is usually inside the source code, just search quickstart in the source folder or download here: https://uwin365-my.sharepoint.com/:u:/g/personal/pham75_uwindsor_ca/EduGN5AWWXlNmInrdxcxv44BnaAj09D440qd9cU07VmW0Q?e=UVgApP
+
+<br>
 
 ### 1.3 GitHub API Configuration
 
@@ -41,16 +56,20 @@ To prevent rate limiting and authenticate with GitHub, a Personal Access Token (
 
 ```env
 # api_key.env
-GITHUB_API_KEY="YOUR_PERSONAL_ACCESS_TOKEN_HERE"
+GITHUB_API_KEY=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 ```
+
+
 ## 2. Project Execution Flow
 
-The project is designed to be run in a two-stage process: **Feature Extraction** followed by **Machine Learning**.
+The project is designed to be run in a two-stage process
+<br>
+**Feature Extraction** followed by **Machine Learning**
 ---
 
 ## 2.1 Stage 1: Feature Extraction
 
-You must run the following 5 Jupyter notebooks, each generating a distinct set of features and caches.  
+You must run the following 5 Jupyter notebooks, each generating a distinct set of features and csv files for the final ML part  
 The caching logic in the Main Helper Function prevents repeated API calls, which is crucial for large datasets.
 
 ### Execution Steps
@@ -64,11 +83,14 @@ The caching logic in the Main Helper Function prevents repeated API calls, which
 ### Output
 
 Each of these 5 notebooks will output two final CSV files: one for Accepted PRs and one for Rejected PRs. These files are typically named according to the feature dimension (e.g., repo_metrics_accepted.csv and repo_metrics_rejected.csv).
-2.2 Stage 2: Machine Learning
+
+<br>
+
+## 2.2 Stage 2: Machine Learning
 
 Once all 5 feature extraction notebooks have been successfully run, the final step is to combine the features and run the classification model.
 
-    Run ML_test.ipynb
+    python ML_test.ipynb
 
 This notebook will:
 
@@ -77,4 +99,8 @@ This notebook will:
 - Define the target variable (Accepted/Rejected).
 - Train a Classification ML Model (e.g., Logistic Regression, Random Forest, etc., depending on the code).
 - Output the Classification ML Report (e.g., accuracy, precision, recall, F1-score, confusion matrix).
+
+<br>
+
+The current Machine Learning notebook file is a bit basic and could be improved with a better data analysis process
 
